@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>GETTING AND CLEANING DATA-ASSIGNMENT 1</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>GETTING AND CLEANING DATA-ASSIGNMENT 1</h1>
+
+<h2>HUMAN ACTIVITY RECOGNITION USING SMARTPHONES</h2>
+
+<p>This code book describes variables, data and transformations which is done to clean the data</p>
+
+<h2>Information about Data</h2>
+
+<p>The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.</p>
+
+<p>The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.</p>
+
+<p>Data include:</p>
+
+<p>Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+Triaxial Angular velocity from the gyroscope.
+A 561-feature vector with time and frequency domain variables.
+Its activity label.
+An identifier of the subject who carried out the experiment.</p>
+
+<p>The dataset includes the following files:</p>
+
+<p>&#39;features_info.txt&#39;: Shows information about the variables used on the feature vector.
+&#39;features.txt&#39;: List of all features.
+&#39;activity_labels.txt&#39;: Links the class labels with their activity name.
+&#39;train/X_train.txt&#39;: Training set.
+&#39;train/y_train.txt&#39;: Training labels.
+&#39;test/X_test.txt&#39;: Test set.
+&#39;test/y_test.txt&#39;: Test labels.
+&#39;train/subject_train.txt&#39;: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+&#39;train/Inertial Signals/total_acc_x_train.txt&#39;: The acceleration signal from the smartphone accelerometer X axis in standard gravity units &#39;g&#39;. Every row shows a 128 element vector. The same description applies for the &#39;total_acc_x_train.txt&#39; and &#39;total_acc_z_train.txt&#39; files for the Y and Z axis.
+&#39;train/Inertial Signals/body_acc_x_train.txt&#39;: The body acceleration signal obtained by subtracting the gravity from the total acceleration.
+&#39;train/Inertial Signals/body_gyro_x_train.txt&#39;: The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second.</p>
+
+<h2>Variables</h2>
+
+<p>The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix &#39;t&#39; to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.</p>
+
+<p>Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).</p>
+
+<p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the &#39;f&#39; to indicate frequency domain signals). These signals were used to estimate variables of the feature vector for each pattern:&#39;-XYZ&#39; is used to denote 3-axial signals in the X, Y and Z directions.</p>
+
+<p>The set of variables that were estimated from these signals are: 
+mean(): Mean value
+std(): Standard deviation</p>
+
+<h2>Transformations</h2>
+
+<h3>Unzip the file</h3>
+
+<pre><code class="r">unzip(zipfile=&quot;activity_data.zip&quot;)
+</code></pre>
+
+<p>The data set is stored in the UCI HAR Dataset/ directory.</p>
+
+<h3>Load the data</h3>
+
+<p>The data is loaded using read.table.</p>
+
+<pre><code class="r">subject_testdata &lt;- read.table(&quot;UCI HAR Dataset/test/subject_test.txt&quot;, header = FALSE)
+activity_testdata &lt;- read.table(&quot;UCI HAR Dataset/test/y_test.txt&quot;, header = FALSE)
+features_testdata &lt;- read.table(&quot;UCI HAR Dataset/test/X_test.txt&quot;, header = FALSE)
+subject_traindata &lt;- read.table(&quot;UCI HAR Dataset/train/subject_train.txt&quot;, header = FALSE)
+activity_traindata &lt;- read.table(&quot;UCI HAR Dataset/train/y_train.txt&quot;, header = FALSE)
+features_traindata &lt;- read.table(&quot;UCI HAR Dataset/train/X_train.txt&quot;, header = FALSE)
+activity_labelsdata &lt;- read.table(&quot;UCI HAR Dataset/activity_labels.txt&quot;, header = FALSE)
+feature_data &lt;- read.table(&quot;UCI HAR Dataset/features.txt&quot;)
+</code></pre>
+
+<h3>Merging test and training sets to create one data set</h3>
+
+<p>The test and train sets are merged into fulldata.</p>
+
+<pre><code class="r">subject_data &lt;- rbind(subject_traindata, subject_testdata)
+activity_data &lt;- rbind(activity_traindata, activity_testdata)
+features_data &lt;- rbind(features_traindata, features_testdata)
+
+colnames(features_data) &lt;- t(feature_data[2])
+colnames(activity_data) &lt;- &quot;Activity&quot;
+colnames(subject_data) &lt;- &quot;Subject&quot;
+
+fulldata &lt;- cbind(features_data,activity_data,subject_data)
+</code></pre>
+
+<h3>Extracting the measurements on the mean and standard deviation for each measurement.</h3>
+
+<p>mean() and sd() are used against fullData for each measurements.</p>
+
+<pre><code class="r">columns_MeanStd &lt;- grep(&quot;.*Mean.*|.*Std.*&quot;, names(fulldata), ignore.case=TRUE)
+Columns &lt;- c(columns_MeanStd, 562, 563)
+dim(fulldata)
+</code></pre>
+
+<pre><code>## [1] 10299   563
+</code></pre>
+
+<pre><code class="r">newdata &lt;- fulldata[,Columns]
+dim(newdata)
+</code></pre>
+
+<pre><code>## [1] 10299    88
+</code></pre>
+
+<h3>Descriptive activity names to name the activities in the data set</h3>
+
+<p>The activity field in newdata is numeric type and it is changed to character type to accept the activity names. The activity names are added and the variables are factored.</p>
+
+<pre><code class="r">newdata$Activity &lt;- as.character(newdata$Activity)
+for (i in 1:6){
+  newdata$Activity[newdata$Activity == i] &lt;- as.character(activity_labelsdata[i,2])
+}
+</code></pre>
+
+<h3>Label the data set with descriptive variable names</h3>
+
+<p>It is necessary to merge the columns  to the test and train dataset. Naming of the activity and subject columns should be done. The data frames are labelled using features.txt with descriptive variable names.</p>
+
+<pre><code class="r">names(newdata)
+</code></pre>
+
+<pre><code>##  [1] &quot;tBodyAcc-mean()-X&quot;                   
+##  [2] &quot;tBodyAcc-mean()-Y&quot;                   
+##  [3] &quot;tBodyAcc-mean()-Z&quot;                   
+##  [4] &quot;tBodyAcc-std()-X&quot;                    
+##  [5] &quot;tBodyAcc-std()-Y&quot;                    
+##  [6] &quot;tBodyAcc-std()-Z&quot;                    
+##  [7] &quot;tGravityAcc-mean()-X&quot;                
+##  [8] &quot;tGravityAcc-mean()-Y&quot;                
+##  [9] &quot;tGravityAcc-mean()-Z&quot;                
+## [10] &quot;tGravityAcc-std()-X&quot;                 
+## [11] &quot;tGravityAcc-std()-Y&quot;                 
+## [12] &quot;tGravityAcc-std()-Z&quot;                 
+## [13] &quot;tBodyAccJerk-mean()-X&quot;               
+## [14] &quot;tBodyAccJerk-mean()-Y&quot;               
+## [15] &quot;tBodyAccJerk-mean()-Z&quot;               
+## [16] &quot;tBodyAccJerk-std()-X&quot;                
+## [17] &quot;tBodyAccJerk-std()-Y&quot;                
+## [18] &quot;tBodyAccJerk-std()-Z&quot;                
+## [19] &quot;tBodyGyro-mean()-X&quot;                  
+## [20] &quot;tBodyGyro-mean()-Y&quot;                  
+## [21] &quot;tBodyGyro-mean()-Z&quot;                  
+## [22] &quot;tBodyGyro-std()-X&quot;                   
+## [23] &quot;tBodyGyro-std()-Y&quot;                   
+## [24] &quot;tBodyGyro-std()-Z&quot;                   
+## [25] &quot;tBodyGyroJerk-mean()-X&quot;              
+## [26] &quot;tBodyGyroJerk-mean()-Y&quot;              
+## [27] &quot;tBodyGyroJerk-mean()-Z&quot;              
+## [28] &quot;tBodyGyroJerk-std()-X&quot;               
+## [29] &quot;tBodyGyroJerk-std()-Y&quot;               
+## [30] &quot;tBodyGyroJerk-std()-Z&quot;               
+## [31] &quot;tBodyAccMag-mean()&quot;                  
+## [32] &quot;tBodyAccMag-std()&quot;                   
+## [33] &quot;tGravityAccMag-mean()&quot;               
+## [34] &quot;tGravityAccMag-std()&quot;                
+## [35] &quot;tBodyAccJerkMag-mean()&quot;              
+## [36] &quot;tBodyAccJerkMag-std()&quot;               
+## [37] &quot;tBodyGyroMag-mean()&quot;                 
+## [38] &quot;tBodyGyroMag-std()&quot;                  
+## [39] &quot;tBodyGyroJerkMag-mean()&quot;             
+## [40] &quot;tBodyGyroJerkMag-std()&quot;              
+## [41] &quot;fBodyAcc-mean()-X&quot;                   
+## [42] &quot;fBodyAcc-mean()-Y&quot;                   
+## [43] &quot;fBodyAcc-mean()-Z&quot;                   
+## [44] &quot;fBodyAcc-std()-X&quot;                    
+## [45] &quot;fBodyAcc-std()-Y&quot;                    
+## [46] &quot;fBodyAcc-std()-Z&quot;                    
+## [47] &quot;fBodyAcc-meanFreq()-X&quot;               
+## [48] &quot;fBodyAcc-meanFreq()-Y&quot;               
+## [49] &quot;fBodyAcc-meanFreq()-Z&quot;               
+## [50] &quot;fBodyAccJerk-mean()-X&quot;               
+## [51] &quot;fBodyAccJerk-mean()-Y&quot;               
+## [52] &quot;fBodyAccJerk-mean()-Z&quot;               
+## [53] &quot;fBodyAccJerk-std()-X&quot;                
+## [54] &quot;fBodyAccJerk-std()-Y&quot;                
+## [55] &quot;fBodyAccJerk-std()-Z&quot;                
+## [56] &quot;fBodyAccJerk-meanFreq()-X&quot;           
+## [57] &quot;fBodyAccJerk-meanFreq()-Y&quot;           
+## [58] &quot;fBodyAccJerk-meanFreq()-Z&quot;           
+## [59] &quot;fBodyGyro-mean()-X&quot;                  
+## [60] &quot;fBodyGyro-mean()-Y&quot;                  
+## [61] &quot;fBodyGyro-mean()-Z&quot;                  
+## [62] &quot;fBodyGyro-std()-X&quot;                   
+## [63] &quot;fBodyGyro-std()-Y&quot;                   
+## [64] &quot;fBodyGyro-std()-Z&quot;                   
+## [65] &quot;fBodyGyro-meanFreq()-X&quot;              
+## [66] &quot;fBodyGyro-meanFreq()-Y&quot;              
+## [67] &quot;fBodyGyro-meanFreq()-Z&quot;              
+## [68] &quot;fBodyAccMag-mean()&quot;                  
+## [69] &quot;fBodyAccMag-std()&quot;                   
+## [70] &quot;fBodyAccMag-meanFreq()&quot;              
+## [71] &quot;fBodyBodyAccJerkMag-mean()&quot;          
+## [72] &quot;fBodyBodyAccJerkMag-std()&quot;           
+## [73] &quot;fBodyBodyAccJerkMag-meanFreq()&quot;      
+## [74] &quot;fBodyBodyGyroMag-mean()&quot;             
+## [75] &quot;fBodyBodyGyroMag-std()&quot;              
+## [76] &quot;fBodyBodyGyroMag-meanFreq()&quot;         
+## [77] &quot;fBodyBodyGyroJerkMag-mean()&quot;         
+## [78] &quot;fBodyBodyGyroJerkMag-std()&quot;          
+## [79] &quot;fBodyBodyGyroJerkMag-meanFreq()&quot;     
+## [80] &quot;angle(tBodyAccMean,gravity)&quot;         
+## [81] &quot;angle(tBodyAccJerkMean),gravityMean)&quot;
+## [82] &quot;angle(tBodyGyroMean,gravityMean)&quot;    
+## [83] &quot;angle(tBodyGyroJerkMean,gravityMean)&quot;
+## [84] &quot;angle(X,gravityMean)&quot;                
+## [85] &quot;angle(Y,gravityMean)&quot;                
+## [86] &quot;angle(Z,gravityMean)&quot;                
+## [87] &quot;Activity&quot;                            
+## [88] &quot;Subject&quot;
+</code></pre>
+
+<pre><code class="r">names(newdata)&lt;-gsub(&quot;Acc&quot;, &quot;Accelerometer&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;Gyro&quot;, &quot;Gyroscope&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;BodyBody&quot;, &quot;Body&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;Mag&quot;, &quot;Magnitude&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;^t&quot;, &quot;Time&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;^f&quot;, &quot;Frequency&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;tBody&quot;, &quot;TimeBody&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;-mean()&quot;, &quot;Mean&quot;, names(newdata), ignore.case = TRUE)
+names(newdata)&lt;-gsub(&quot;-std()&quot;, &quot;STD&quot;, names(newdata), ignore.case = TRUE)
+names(newdata)&lt;-gsub(&quot;-freq()&quot;, &quot;Frequency&quot;, names(newdata), ignore.case = TRUE)
+names(newdata)&lt;-gsub(&quot;angle&quot;, &quot;Angle&quot;, names(newdata))
+names(newdata)&lt;-gsub(&quot;gravity&quot;, &quot;Gravity&quot;, names(newdata))
+names(newdata)
+</code></pre>
+
+<pre><code>##  [1] &quot;TimeBodyAccelerometerMean()-X&quot;                    
+##  [2] &quot;TimeBodyAccelerometerMean()-Y&quot;                    
+##  [3] &quot;TimeBodyAccelerometerMean()-Z&quot;                    
+##  [4] &quot;TimeBodyAccelerometerSTD()-X&quot;                     
+##  [5] &quot;TimeBodyAccelerometerSTD()-Y&quot;                     
+##  [6] &quot;TimeBodyAccelerometerSTD()-Z&quot;                     
+##  [7] &quot;TimeGravityAccelerometerMean()-X&quot;                 
+##  [8] &quot;TimeGravityAccelerometerMean()-Y&quot;                 
+##  [9] &quot;TimeGravityAccelerometerMean()-Z&quot;                 
+## [10] &quot;TimeGravityAccelerometerSTD()-X&quot;                  
+## [11] &quot;TimeGravityAccelerometerSTD()-Y&quot;                  
+## [12] &quot;TimeGravityAccelerometerSTD()-Z&quot;                  
+## [13] &quot;TimeBodyAccelerometerJerkMean()-X&quot;                
+## [14] &quot;TimeBodyAccelerometerJerkMean()-Y&quot;                
+## [15] &quot;TimeBodyAccelerometerJerkMean()-Z&quot;                
+## [16] &quot;TimeBodyAccelerometerJerkSTD()-X&quot;                 
+## [17] &quot;TimeBodyAccelerometerJerkSTD()-Y&quot;                 
+## [18] &quot;TimeBodyAccelerometerJerkSTD()-Z&quot;                 
+## [19] &quot;TimeBodyGyroscopeMean()-X&quot;                        
+## [20] &quot;TimeBodyGyroscopeMean()-Y&quot;                        
+## [21] &quot;TimeBodyGyroscopeMean()-Z&quot;                        
+## [22] &quot;TimeBodyGyroscopeSTD()-X&quot;                         
+## [23] &quot;TimeBodyGyroscopeSTD()-Y&quot;                         
+## [24] &quot;TimeBodyGyroscopeSTD()-Z&quot;                         
+## [25] &quot;TimeBodyGyroscopeJerkMean()-X&quot;                    
+## [26] &quot;TimeBodyGyroscopeJerkMean()-Y&quot;                    
+## [27] &quot;TimeBodyGyroscopeJerkMean()-Z&quot;                    
+## [28] &quot;TimeBodyGyroscopeJerkSTD()-X&quot;                     
+## [29] &quot;TimeBodyGyroscopeJerkSTD()-Y&quot;                     
+## [30] &quot;TimeBodyGyroscopeJerkSTD()-Z&quot;                     
+## [31] &quot;TimeBodyAccelerometerMagnitudeMean()&quot;             
+## [32] &quot;TimeBodyAccelerometerMagnitudeSTD()&quot;              
+## [33] &quot;TimeGravityAccelerometerMagnitudeMean()&quot;          
+## [34] &quot;TimeGravityAccelerometerMagnitudeSTD()&quot;           
+## [35] &quot;TimeBodyAccelerometerJerkMagnitudeMean()&quot;         
+## [36] &quot;TimeBodyAccelerometerJerkMagnitudeSTD()&quot;          
+## [37] &quot;TimeBodyGyroscopeMagnitudeMean()&quot;                 
+## [38] &quot;TimeBodyGyroscopeMagnitudeSTD()&quot;                  
+## [39] &quot;TimeBodyGyroscopeJerkMagnitudeMean()&quot;             
+## [40] &quot;TimeBodyGyroscopeJerkMagnitudeSTD()&quot;              
+## [41] &quot;FrequencyBodyAccelerometerMean()-X&quot;               
+## [42] &quot;FrequencyBodyAccelerometerMean()-Y&quot;               
+## [43] &quot;FrequencyBodyAccelerometerMean()-Z&quot;               
+## [44] &quot;FrequencyBodyAccelerometerSTD()-X&quot;                
+## [45] &quot;FrequencyBodyAccelerometerSTD()-Y&quot;                
+## [46] &quot;FrequencyBodyAccelerometerSTD()-Z&quot;                
+## [47] &quot;FrequencyBodyAccelerometerMeanFreq()-X&quot;           
+## [48] &quot;FrequencyBodyAccelerometerMeanFreq()-Y&quot;           
+## [49] &quot;FrequencyBodyAccelerometerMeanFreq()-Z&quot;           
+## [50] &quot;FrequencyBodyAccelerometerJerkMean()-X&quot;           
+## [51] &quot;FrequencyBodyAccelerometerJerkMean()-Y&quot;           
+## [52] &quot;FrequencyBodyAccelerometerJerkMean()-Z&quot;           
+## [53] &quot;FrequencyBodyAccelerometerJerkSTD()-X&quot;            
+## [54] &quot;FrequencyBodyAccelerometerJerkSTD()-Y&quot;            
+## [55] &quot;FrequencyBodyAccelerometerJerkSTD()-Z&quot;            
+## [56] &quot;FrequencyBodyAccelerometerJerkMeanFreq()-X&quot;       
+## [57] &quot;FrequencyBodyAccelerometerJerkMeanFreq()-Y&quot;       
+## [58] &quot;FrequencyBodyAccelerometerJerkMeanFreq()-Z&quot;       
+## [59] &quot;FrequencyBodyGyroscopeMean()-X&quot;                   
+## [60] &quot;FrequencyBodyGyroscopeMean()-Y&quot;                   
+## [61] &quot;FrequencyBodyGyroscopeMean()-Z&quot;                   
+## [62] &quot;FrequencyBodyGyroscopeSTD()-X&quot;                    
+## [63] &quot;FrequencyBodyGyroscopeSTD()-Y&quot;                    
+## [64] &quot;FrequencyBodyGyroscopeSTD()-Z&quot;                    
+## [65] &quot;FrequencyBodyGyroscopeMeanFreq()-X&quot;               
+## [66] &quot;FrequencyBodyGyroscopeMeanFreq()-Y&quot;               
+## [67] &quot;FrequencyBodyGyroscopeMeanFreq()-Z&quot;               
+## [68] &quot;FrequencyBodyAccelerometerMagnitudeMean()&quot;        
+## [69] &quot;FrequencyBodyAccelerometerMagnitudeSTD()&quot;         
+## [70] &quot;FrequencyBodyAccelerometerMagnitudeMeanFreq()&quot;    
+## [71] &quot;FrequencyBodyAccelerometerJerkMagnitudeMean()&quot;    
+## [72] &quot;FrequencyBodyAccelerometerJerkMagnitudeSTD()&quot;     
+## [73] &quot;FrequencyBodyAccelerometerJerkMagnitudeMeanFreq()&quot;
+## [74] &quot;FrequencyBodyGyroscopeMagnitudeMean()&quot;            
+## [75] &quot;FrequencyBodyGyroscopeMagnitudeSTD()&quot;             
+## [76] &quot;FrequencyBodyGyroscopeMagnitudeMeanFreq()&quot;        
+## [77] &quot;FrequencyBodyGyroscopeJerkMagnitudeMean()&quot;        
+## [78] &quot;FrequencyBodyGyroscopeJerkMagnitudeSTD()&quot;         
+## [79] &quot;FrequencyBodyGyroscopeJerkMagnitudeMeanFreq()&quot;    
+## [80] &quot;Angle(TimeBodyAccelerometerMean,Gravity)&quot;         
+## [81] &quot;Angle(TimeBodyAccelerometerJerkMean),GravityMean)&quot;
+## [82] &quot;Angle(TimeBodyGyroscopeMean,GravityMean)&quot;         
+## [83] &quot;Angle(TimeBodyGyroscopeJerkMean,GravityMean)&quot;     
+## [84] &quot;Angle(X,GravityMean)&quot;                             
+## [85] &quot;Angle(Y,GravityMean)&quot;                             
+## [86] &quot;Angle(Z,GravityMean)&quot;                             
+## [87] &quot;Activity&quot;                                         
+## [88] &quot;Subject&quot;
+</code></pre>
+
+<h3>Creating a second, independent tidy data set</h3>
+
+<p>The independent tidy data set is created with the average of each variable for each activity and each subject. Data table is formed by taking the combination of average of each variable for each activity and each subject. The obtained tidy dataset is saved in tidy.txt file.</p>
+
+<pre><code class="r">newdata$Subject &lt;- as.factor(newdata$Subject)
+newdata &lt;- data.table(newdata)
+
+tidydata &lt;- aggregate(. ~Subject + Activity, newdata, mean)
+tidydata &lt;- tidydata[order(tidydata$Subject,tidydata$Activity),]
+write.table(tidydata, file = &quot;tidy.txt&quot;,sep=&quot;  &quot;, row.names = FALSE)
+</code></pre>
+
+</body>
+
+</html>

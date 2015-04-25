@@ -24,10 +24,11 @@ run_analysis.R includes the scripts showing the transformations:
       Uses descriptive activity names to name the activities in the data set
       Appropriately labels the data set with descriptive variable names.
       Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+      
+ The test and train sets are merged into fulldata. Mean and standard deviation are used against fullData for each measurements. The activity field in newdata is numeric type and it is changed to character type to accept the activity names. The activity names are added and the variables are factored. It is necessary to merge the columns  to the test and train dataset. Naming of the activity and subject columns should be done. The data frames are labelled using features.txt with descriptive variable names. The independent tidy data set is created with the average of each variable for each activity and each subject. Data table is formed by taking the combination of average of each variable for each activity and each subject. The obtained tidy dataset is saved in tidy.txt file.
 
 
 ## Output
 
-A tidy data set is created which is shown in tidy.txt file. The independent tidy data set is created with the average of each variable for each activity and each subject. Data table is formed by taking the combination of average of each variable for each activity and each subject. The obtained tidy dataset is saved in tidy.txt file.
-
+A tidy data set is created which is shown in tidy.txt file. 
 A CodeBook is written that describes the variables, the data, and the work that has been performed to clean up the data.
